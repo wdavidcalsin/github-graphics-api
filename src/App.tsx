@@ -24,7 +24,20 @@ class App extends React.Component {
     }
 
     render() {
-        return <Bar data={data} width={100} height={300} options={{ maintainAspectRatio: false }} />;
+        return (
+            <>
+                <Bar
+                    data={data}
+                    width={100}
+                    height={300}
+                    options={{ maintainAspectRatio: false }}
+                />
+                <div>
+                    <h3>Willian david calsin borda</h3>
+                    <p>Programer for the Typescrip and javascript</p>
+                </div>
+            </>
+        );
     }
 }
 
