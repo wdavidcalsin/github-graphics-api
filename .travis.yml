@@ -1,0 +1,8 @@
+language: node_js
+
+node_js:
+    - '14.15.4'
+
+script:
+    - npm install
+    - npm lint
