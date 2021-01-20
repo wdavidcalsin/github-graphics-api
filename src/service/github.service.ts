@@ -1,7 +1,10 @@
+import { GithubApiI } from '../interfaces/githubApi';
+
 class ApiGithub {
-    async getApi(): Promise<JSON> {
+    public async getApi<T>(): Promise<T> {
         const response = await fetch('https://api.github.com/users/wdavidcalsin');
-        return await response.json();
+        const body = await response.json();
+        return body;
     }
 }
 
