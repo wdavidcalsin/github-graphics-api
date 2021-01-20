@@ -3,7 +3,7 @@ import ImgLogo from '../assets/img/image-2.png';
 import RedesTwiter from '../assets/img/image-4.png';
 import RedesGithub from '../assets/img/image-3.png';
 
-const Header = () => {
+const Header = (): JSX.Element => {
     return (
         <header className="header fx fx-aic">
             <div className="container fx fx-jcsb fx-aic" style={{}}>

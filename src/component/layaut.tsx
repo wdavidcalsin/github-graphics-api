@@ -5,7 +5,7 @@ interface PropsLayoutI {
     children: ReactNode;
 }
 
-const Layout = (props: PropsLayoutI) => {
+const Layout = (props: PropsLayoutI): JSX.Element => {
     const { children } = props;
 
     return (
