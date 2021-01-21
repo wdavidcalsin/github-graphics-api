@@ -1,5 +1,8 @@
 @import './global';
-@import './variable';
+@import './flex';
+
+// PAGE
+@import './page/style.scss';
 
 // COMPONENTS
 @import './components/styles.scss';
