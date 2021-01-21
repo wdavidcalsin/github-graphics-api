@@ -6,14 +6,18 @@ import RedesGithub from '../assets/img/image-3.png';
 const Header = (): JSX.Element => {
     return (
         <header className="header fx fx-aic">
-            <div className="container fx fx-jcsb fx-aic" style={{}}>
+            <div className="container-small  fx fx-jcsb fx-aic">
                 <div className="logo fx fx-aic">
                     <img src={ImgLogo} alt="" />
                     <span>Statistics Profile </span>
                 </div>
                 <div className="redes fx fx-aic">
-                    <img src={RedesGithub} alt="" />
-                    <img src={RedesTwiter} alt="" />
+                    <a href="/">
+                        <img src={RedesGithub} alt="" />
+                    </a>
+                    <a href="/">
+                        <img src={RedesTwiter} alt="" />
+                    </a>
                 </div>
             </div>
         </header>
