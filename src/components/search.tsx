@@ -1,10 +1,14 @@
-import React, { BaseSyntheticEvent, Component, ReactNode } from 'react';
+import React, { BaseSyntheticEvent, Component, ContextType, ReactNode } from 'react';
 import SeacrhImg from '../assets/img/search.png';
+import { UserInputContext, UserInputProvider, useUserInput } from '../context/user.context';
 
-type MyProps = { props?: any };
+type MyProps = { props?: undefined };
 type MyStates = { showText: string };
 
 class Search extends Component<MyProps, MyStates> {
+    static contextType = UserInputContext;
+    context!: ContextType<typeof UserInputContext>;
+
     constructor(props?: any) {
         super(props);
         this.state = { showText: '...' };
@@ -12,11 +16,13 @@ class Search extends Component<MyProps, MyStates> {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event: BaseSyntheticEvent) {
-        this.setState({ showText: event.target.value });
+    handleChange(event: BaseSyntheticEvent): void {
+        this.context.setUser(event.target.value);
     }
 
     render(): ReactNode {
+        // const { user, setUser } = useUserInput();
+
         return (
             <div className="search">
                 <div className="container-small fx fx-jcc fx-dc">
@@ -27,7 +33,7 @@ class Search extends Component<MyProps, MyStates> {
                             <img src={SeacrhImg} alt="" />
                         </button>
                     </form>
-                    <h3>@{this.state.showText}</h3>
+                    <h3>@{this.context.user}</h3>
                 </div>
             </div>
         );
