@@ -1,8 +1,8 @@
 import React, { Component, CSSProperties, ReactNode, StyleHTMLAttributes } from 'react';
-import Layout from '../component/layaut';
-import Search from '../component/search';
-import Options from '../component/options';
-import ShowContent from '../component/show-content';
+import Layout from '../components/layaut';
+import Search from '../components/search';
+import Options from '../components/options';
+import ShowContent from '../components/show-content';
 
 class Home extends Component {
     render(): ReactNode {
