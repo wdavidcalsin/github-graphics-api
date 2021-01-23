@@ -11,7 +11,6 @@ class Search extends Component<MyProps, MyStates> {
 
     constructor(props?: any) {
         super(props);
-        this.state = { showText: '...' };
 
         this.handleChange = this.handleChange.bind(this);
     }
@@ -21,15 +20,13 @@ class Search extends Component<MyProps, MyStates> {
     }
 
     render(): ReactNode {
-        // const { user, setUser } = useUserInput();
-
         return (
             <div className="search">
                 <div className="container-small fx fx-jcc fx-dc">
                     <h2>Github Profile User</h2>
-                    <form action="" className="fx fx-jcc">
+                    <form action="" className="fx fx-jcc" onSubmit={this.context.onSubmitsendUser}>
                         <input type="text" onChange={this.handleChange} placeholder="@example" />
-                        <button>
+                        <button type="submit">
                             <img src={SeacrhImg} alt="" />
                         </button>
                     </form>
