@@ -2,6 +2,7 @@ import React, { Component, ContextType } from 'react';
 import ApiGithub from '../service/github.service';
 import { GithubApiI } from '../interfaces/githubApi';
 import { DataContext } from '../context/data.context';
+import { Perfil, Blog } from './common/showNormal';
 
 type MyProps = { props?: undefined };
 type MyStates = { data: GithubApiI };
@@ -29,15 +30,19 @@ class ShowContent extends Component<MyProps, MyStates> {
     render() {
         return (
             <div>
-                {Object.keys(this.context.data).length != 0 ? (
+                {Object.keys(this.context.data).length != 0 && this.context.resStatus != 404 ? (
                     <div className="show-content">
                         <h2>Statistics</h2>
-                        <div>Mostar:</div>
+                        {/* <div>Mostar:</div> */}
+                        <Perfil avatar={this.context.data.avatar_url} />
+
+                        {/*                         
                         <h4>
                             avatar_url: {this.context.data.avatar_url}
                             <img src={this.context.data.avatar_url} alt="" />
-                        </h4>
-                        <h4>blog: {this.context.data.blog}</h4>
+                        </h4> */}
+                        <Blog blog={this.context.data.blog} />
+                        {/* <h4>blog: {this.context.data.blog}</h4> */}
                         <h4>company: {this.context.data.company}</h4>
                         <h4>created at: {this.context.data.created_at}</h4>
                         <h4>email: {this.context.data.email}</h4>

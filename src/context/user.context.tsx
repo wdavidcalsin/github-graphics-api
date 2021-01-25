@@ -13,13 +13,15 @@ export const UserInputContext = createContext<IUserInput>({} as IUserInput);
 
 const UserInputProvider = ({ children }: any) => {
     const [user, setUser] = useState<string>('...');
-    const { data, setData } = useData();
+    const { data, resStatus, setData, setResSatus } = useData();
 
     const onSubmitsendUser = async (e: BaseSyntheticEvent) => {
         e.preventDefault();
         const res = await new ApiGithub().getApi<GithubApiI>(user);
         setData(await res.json());
+        setResSatus(await res.status);
         console.log(data);
+        console.log(resStatus);
     };
 
     return (
