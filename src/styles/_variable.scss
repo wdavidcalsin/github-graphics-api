@@ -2,6 +2,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
+/* Variables de color si el tema es dark */
+.home[data-theme='sun'] {
+    --primary-color: #f5f5fa;
+    --line-color: rgba(218, 218, 218, 0.5);
+
+    --font-title-color: #101a29;
+
+    --font-search-color: #7878ab;
+
+    --bg-input-color: #f5f5fa;
+    --boxShadow-input-color: inset 1px 1px 2px 0 rgba(170, 170, 240, 0.5),
+        inset -1px -1px 2px 0 white;
+
+    --boxShadow-button-color: 1px 1px 2px 0 rgba(170, 170, 240, 0.5);
+    --font-button-color: #7878ab;
+
+    --font-option-color: #283850;
+}
+
+.home[data-theme='moon'] {
+    --primary-color: #425674;
+    --line-color: #384964;
+
+    --font-title-color: #dfdffb;
+
+    --font-search-color: #dfdffb;
+
+    --bg-input-color: #425674;
+    --boxShadow-input-color: inset 1px 1px 2px 0 #2b384d, inset -1px -1px 2px 0 #52698b;
+
+    --boxShadow-button-color: 1px 1px 2px 0 #2b384d;
+    --font-button-color: #dfdffb;
+
+    --font-option-color: #dfdffb;
+}
+
 $font_prettyRum: 'Rum Raisin', sans-serif;
 $font_prettyRoboto: 'Roboto', sans-serif;
 $font_prettyYusei: 'Yusei Magic', sans-serif;
+
+//HEADER
+$heigthHeader: 80px;

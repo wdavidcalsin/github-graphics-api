@@ -6,52 +6,27 @@ const Options = (): JSX.Element => {
             <h2>Options</h2>
             <form action="">
                 <label>
-                    Lorem example
+                    Willian Calsin
                     <input type="checkbox" />
                     <span className="checkmark"></span>
                 </label>
                 <label>
-                    Lorem example
+                    Yoni Calsin
                     <input type="checkbox" />
                     <span className="checkmark"></span>
                 </label>
                 <label>
-                    Lorem example
+                    Yilmer Calsin
                     <input type="checkbox" />
                     <span className="checkmark"></span>
                 </label>
                 <label>
-                    Lorem example
+                    Matilde Borda
                     <input type="checkbox" />
                     <span className="checkmark"></span>
                 </label>
                 <label>
-                    Lorem example
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-                <label>
-                    Lorem example
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-                <label>
-                    Lorem example
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-                <label>
-                    Lorem example
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-                <label>
-                    Lorem example
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                </label>
-                <label>
-                    Lorem example
+                    Salomon Calsin
                     <input type="checkbox" />
                     <span className="checkmark"></span>
                 </label>

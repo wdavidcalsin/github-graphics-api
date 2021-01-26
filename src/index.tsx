@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 import 'bootstrap-container';
 import 'flexbox-fast';
+
 import './styles/styles.scss';
 
 ReactDOM.render(
