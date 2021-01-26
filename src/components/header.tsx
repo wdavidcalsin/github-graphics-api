@@ -4,16 +4,16 @@ import ImgLogo from '../assets/img/image-2.png';
 import RedesTwiter from '../assets/img/image-4.png';
 import RedesGithub from '../assets/img/image-3.png';
 
-import Sol from '../assets/img/sol-complete.png';
-import Luna from '../assets/img/luna-complete.png';
-import SolAndLuna from '../assets/img/img-complete.png';
+import SunAndMoon from '../assets/img/img-complete.png';
+import { useTheme } from '../context/theme.context';
 
 const Header = (): JSX.Element => {
-    const [theme, setTheme] = useState(true);
+    const { theme, setTheme } = useTheme();
 
     const changeTheme = () => {
         setTheme(!theme);
-        console.log('hola', theme);
+
+        console.log('Theme:', theme);
     };
 
     return (
@@ -25,9 +25,10 @@ const Header = (): JSX.Element => {
                 </div>
                 <div className="theme">
                     <img
-                        src={SolAndLuna}
+                        src={SunAndMoon}
                         className={theme ? 'img-sol' : 'img-luna'}
                         onClick={changeTheme}
+                        draggable="false"
                     />
                 </div>
                 <div className="redes fx fx-aic">

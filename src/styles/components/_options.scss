@@ -1,36 +1,41 @@
 @import '../variable';
 
 .options {
-    background-color: #3ab0ff;
     padding: 20px;
-    border-radius: 5px;
+    border-right: 1px solid var(--line-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
     h2 {
         font-family: $font_prettyRum;
         color: white;
-        margin: 0;
-        font-size: 25px;
-        text-align: center;
-        margin-bottom: 20px;
-        font-weight: 400;
+        margin: 0 auto;
+        font-size: 23px;
+        margin-bottom: 30px;
+        font-weight: 200;
+        background-color: #1377ff;
+        padding: 5px 20px;
+        border-radius: 50px;
+        box-shadow: 0px 5px 20px 0px rgba(19, 119, 255, 0.24);
     }
 }
 
 .options > form {
-    width: 160px;
+    width: 150px;
 }
 
 .options > form > label {
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     cursor: pointer;
     font-size: 15px;
     user-select: none;
     font-family: $font_prettyRoboto;
     font-weight: 500;
-    color: rgb(229, 231, 233);
+    color: var(--font-option-color);
 
     input {
         position: absolute;
@@ -42,17 +47,19 @@
 
     .checkmark {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 0px;
+        left: 0px;
         height: 20px;
         width: 20px;
         background-color: #eee;
         border-radius: 2px;
+        border: 1px solid #d7d7d7;
 
         &::after {
             content: '';
             position: absolute;
             display: none;
+            margin: -2px;
         }
     }
 

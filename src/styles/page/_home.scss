@@ -1,4 +1,12 @@
+@import '../variable';
+
+.home {
+    background-color: var(--primary-color);
+}
+
 .content {
-    display: flex;
-    align-items: flex-start;
+    border-left: 1px solid var(--line-color);
+    border-right: 1px solid var(--line-color);
+    min-height: calc(100vh - 80px);
+    min-height: 100vh;
 }

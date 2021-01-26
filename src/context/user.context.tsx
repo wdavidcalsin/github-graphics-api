@@ -17,9 +17,11 @@ const UserInputProvider = ({ children }: any) => {
 
     const onSubmitsendUser = async (e: BaseSyntheticEvent) => {
         e.preventDefault();
+
         const res = await new ApiGithub().getApi<GithubApiI>(user);
         setData(await res.json());
         setResSatus(await res.status);
+
         console.log(data);
         console.log(resStatus);
     };

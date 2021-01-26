@@ -22,10 +22,10 @@ class Search extends Component<MyProps, MyStates> {
     render(): ReactNode {
         return (
             <div className="search">
-                <div className="container-small fx fx-jcc fx-dc">
+                <div className=" fx fx-jcc fx-dc">
                     <h2>Github Profile User</h2>
                     <form action="" className="fx fx-jcc" onSubmit={this.context.onSubmitsendUser}>
-                        <input type="text" onChange={this.handleChange} placeholder="@example" />
+                        <input type="text" onChange={this.handleChange} placeholder="Username" />
                         <button type="submit">
                             <img src={SeacrhImg} alt="" />
                         </button>
