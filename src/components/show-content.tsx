@@ -1,11 +1,40 @@
 import React, { Component, ContextType } from 'react';
+import * as ReactDOM from 'react-dom';
 import ApiGithub from '../service/github.service';
 import { GithubApiI } from '../interfaces/githubApi';
 import { DataContext } from '../context/data.context';
 import { Perfil, Blog } from './common/showNormal';
+import { Pie } from 'react-chartjs-2';
+import { ChartOptions } from 'chart.js';
+
+interface Idataset {
+    label: string;
+    fill: boolean;
+    lineTension: number;
+    backgroundColor: string;
+    borderColor: string;
+    borderCapStyle: string;
+    borderDash: Array<null>;
+    borderDashOffset: number;
+    borderJoinStyle: string;
+    pointBorderColor: string;
+    pointBackgroundColor: string;
+    pointBorderWidth: number;
+    pointHoverRadius: number;
+    pointHoverBackgroundColor: string;
+    pointHoverBorderColor: string;
+    pointHoverBorderWidth: number;
+    pointRadius: number;
+    pointHitRadius: number;
+    data: Array<number>;
+}
+interface dataSatictis {
+    labels: Array<string>;
+    datasets: Array<Idataset>;
+}
 
 type MyProps = { props?: undefined };
-type MyStates = { data: GithubApiI };
+type MyStates = { data: GithubApiI; dataStatic: dataSatictis };
 
 class ShowContent extends Component<MyProps, MyStates> {
     static contextType = DataContext;
@@ -16,6 +45,7 @@ class ShowContent extends Component<MyProps, MyStates> {
 
         this.state = {
             data: {} as GithubApiI,
+            dataStatic: {} as dataSatictis,
         };
 
         // this.apiReturn = this.apiReturn.bind(this);
@@ -27,22 +57,32 @@ class ShowContent extends Component<MyProps, MyStates> {
         console.log(typeof this.context.data);
     }
 
+    // displayName: 'LineExample';
     render() {
+        const data = {
+            labels: ['Red', 'Green', 'Yellow'],
+            datasets: [
+                {
+                    data: [300, 50, 100],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                },
+            ],
+        };
+
+        const options: ChartOptions = {
+            legend: {
+                position: 'bottom',
+            },
+        };
+
         return (
             <div>
-                {Object.keys(this.context.data).length != 0 && this.context.resStatus != 404 ? (
+                {/* {Object.keys(this.context.data).length != 0 && this.context.resStatus != 404 ? (
                     <div className="show-content">
                         <h2>Statistics</h2>
-                        {/* <div>Mostar:</div> */}
                         <Perfil avatar={this.context.data.avatar_url} />
-
-                        {/*                         
-                        <h4>
-                            avatar_url: {this.context.data.avatar_url}
-                            <img src={this.context.data.avatar_url} alt="" />
-                        </h4> */}
                         <Blog blog={this.context.data.blog} />
-                        {/* <h4>blog: {this.context.data.blog}</h4> */}
                         <h4>company: {this.context.data.company}</h4>
                         <h4>created at: {this.context.data.created_at}</h4>
                         <h4>email: {this.context.data.email}</h4>
@@ -61,7 +101,9 @@ class ShowContent extends Component<MyProps, MyStates> {
                     </div>
                 ) : (
                     <div>No hay datos todavia</div>
-                )}
+                )} */}
+                <h2>Line Example</h2>
+                <Pie data={data} options={options} />
             </div>
         );
     }
