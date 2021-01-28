@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import ImgLogo from '../assets/img/image-2.png';
+import ImgLogo from '../assets/img/logo.png';
 import RedesTwiter from '../assets/img/image-4.png';
 import RedesGithub from '../assets/img/image-3.png';
 
