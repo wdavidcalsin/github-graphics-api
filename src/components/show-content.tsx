@@ -1,11 +1,14 @@
 import React, { Component, ContextType } from 'react';
 import * as ReactDOM from 'react-dom';
+import { ChartOptions } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+
 import ApiGithub from '../service/github.service';
+
 import { GithubApiI } from '../interfaces/githubApi';
 import { DataContext } from '../context/data.context';
 import { Perfil, Blog } from './common/showNormal';
-import { Pie } from 'react-chartjs-2';
-import { ChartOptions } from 'chart.js';
+import { ProfileGithub } from './common/profileGithub';
 
 interface Idataset {
     label: string;
@@ -78,10 +81,11 @@ class ShowContent extends Component<MyProps, MyStates> {
 
         return (
             <div>
-                {/* {Object.keys(this.context.data).length != 0 && this.context.resStatus != 404 ? (
+                {Object.keys(this.context.data).length != 0 && this.context.resStatus != 404 ? (
                     <div className="show-content">
                         <h2>Statistics</h2>
-                        <Perfil avatar={this.context.data.avatar_url} />
+                        <ProfileGithub {...this.context.data} />
+                        {/* <Perfil avatar={this.context.data.avatar_url} /> */}
                         <Blog blog={this.context.data.blog} />
                         <h4>company: {this.context.data.company}</h4>
                         <h4>created at: {this.context.data.created_at}</h4>
@@ -101,9 +105,9 @@ class ShowContent extends Component<MyProps, MyStates> {
                     </div>
                 ) : (
                     <div>No hay datos todavia</div>
-                )} */}
-                <h2>Line Example</h2>
-                <Pie data={data} options={options} />
+                )}
+                {/* <h2>Line Example</h2>
+                <Pie data={data} options={options} /> */}
             </div>
         );
     }

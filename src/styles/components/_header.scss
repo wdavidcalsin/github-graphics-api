@@ -52,7 +52,17 @@ img {
         }
     }
 
-    .redes > a > img {
+    .redes > a > svg {
         width: 30px;
+        font-size: 25px;
+        margin: 0 5px;
+
+        &.github {
+            color: black;
+        }
+
+        &.twitter {
+            color: rgb(13, 186, 255);
+        }
     }
 }
