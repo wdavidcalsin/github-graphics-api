@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import ImgLogo from '../assets/img/logo.png';
-import RedesTwiter from '../assets/img/image-4.png';
-import RedesGithub from '../assets/img/image-3.png';
+
+import { FaGithub } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
 
 import SunAndMoon from '../assets/img/img-complete.png';
 import { useTheme } from '../context/theme.context';
@@ -33,10 +34,10 @@ const Header = (): JSX.Element => {
                 </div>
                 <div className="redes fx fx-aic">
                     <a href="/">
-                        <img src={RedesGithub} alt="" />
+                        <FaGithub className="github" />
                     </a>
                     <a href="/">
-                        <img src={RedesTwiter} alt="" />
+                        <FaTwitter className="twitter" />
                     </a>
                 </div>
             </div>
