@@ -58,11 +58,11 @@ img {
         margin: 0 5px;
 
         &.github {
-            color: black;
+            color: var(--redes-svg-color-G);
         }
 
         &.twitter {
-            color: rgb(13, 186, 255);
+            color: var(--redes-svg-color-T);
         }
     }
 }

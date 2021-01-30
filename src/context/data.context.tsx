@@ -16,7 +16,14 @@ const DataProvider = ({ children }: any) => {
     const [resStatus, setResSatus] = useState<number>(404);
 
     return (
-        <DataContext.Provider value={{ data, resStatus, setData, setResSatus }}>
+        <DataContext.Provider
+            value={{
+                data,
+                resStatus,
+                setData,
+                setResSatus,
+            }}
+        >
             {children}
         </DataContext.Provider>
     );
@@ -24,7 +31,12 @@ const DataProvider = ({ children }: any) => {
 
 const useData = () => {
     const { data, resStatus, setData, setResSatus } = useContext(DataContext);
-    return { data, resStatus, setData, setResSatus };
+    return {
+        data,
+        resStatus,
+        setData,
+        setResSatus,
+    };
 };
 
 export { DataProvider, useData };
