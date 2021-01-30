@@ -33,10 +33,10 @@ const Header = (): JSX.Element => {
                     />
                 </div>
                 <div className="redes fx fx-aic">
-                    <a href="/">
+                    <a href="https://github.com/wdavidcalsin">
                         <FaGithub className="github" />
                     </a>
-                    <a href="/">
+                    <a href="https://twitter.com/wdavidcalsin">
                         <FaTwitter className="twitter" />
                     </a>
                 </div>

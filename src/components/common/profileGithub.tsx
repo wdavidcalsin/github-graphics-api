@@ -1,16 +1,21 @@
 import React from 'react';
-import { FaTwitter } from 'react-icons/fa';
+
 import { CgProfile } from 'react-icons/cg';
 import { RiGitRepositoryLine } from 'react-icons/ri';
 import { BiTimeFive } from 'react-icons/bi';
-import { BiLinkExternal } from 'react-icons/bi';
 import { ImProfile } from 'react-icons/im';
+import { FaRegBuilding } from 'react-icons/fa';
 
 import { GithubApiI } from '../../interfaces/githubApi';
 
-// interface IProps extends GithubApiI {}
+const timeFormat = (date: string) => {
+    const dateCreate = new Date(date);
+    const dateCurrent = new Date();
 
-const ProfileGithub = (props: any) => {
+    return -(dateCreate.getFullYear() - dateCurrent.getFullYear());
+};
+
+const ProfileGithub = (props: GithubApiI) => {
     return (
         <div className="profile fx fx-jcc">
             <div className="avatar fx fx-aic">
@@ -20,23 +25,25 @@ const ProfileGithub = (props: any) => {
                 <ul>
                     <li>
                         <CgProfile />
-                        <span>typsih ({props.name})</span>
+                        <span>
+                            {props.name} (@{props.login})
+                        </span>
                     </li>
                     <li>
                         <RiGitRepositoryLine />
-                        <span>39 public repos</span>
+                        <span>{props.public_repos} public repos</span>
                     </li>
                     <li>
                         <BiTimeFive />
-                        <span>Joined GitHub 6 years ago</span>
+                        <span>Joined GitHub {timeFormat(props.created_at)} years ago</span>
                     </li>
                     <li>
-                        <BiLinkExternal />
-                        <span>Telenor Digital</span>
+                        <FaRegBuilding />
+                        <span>{props.company ? props.company : 'No Company'}</span>
                     </li>
                     <li>
                         <ImProfile />
-                        <a href="/">
+                        <a href={props.html_url}>
                             <span>View Profile in Github</span>
                         </a>
                     </li>
