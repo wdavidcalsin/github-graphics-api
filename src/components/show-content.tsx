@@ -4,16 +4,23 @@ import { ChartOptions, ChartData } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 import { GithubApiI } from '../interfaces/githubApi';
+import { RepoApiI } from '../interfaces/repoApi';
 
 import { DataContext } from '../context/data.context';
 
-import { Perfil, Blog } from './common/showNormal';
+import { Blog } from './common/showNormal';
 import { ProfileGithub } from './common/profileGithub';
+import { RepoContext } from '../context/repo.context';
+
+import Repos from '../service/repos.service';
 
 type MyProps = { props?: undefined };
 type MyStates = { data: GithubApiI };
 
 class ShowContent extends Component<MyProps, MyStates> {
+    static repoxtType = RepoContext;
+    contextRepo!: ContextType<typeof RepoContext>;
+
     static contextType = DataContext;
     context!: ContextType<typeof DataContext>;
 
@@ -23,11 +30,16 @@ class ShowContent extends Component<MyProps, MyStates> {
         this.state = {
             data: {} as GithubApiI,
         };
-
-        // this.apiReturn = this.apiReturn.bind(this);
     }
 
-    // async apiReturn() {}
+    componentDidMount() {
+        new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
+    }
+
+    componentDidUpdate() {
+        new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
+        // console.log(this.context.data.repos_url);
+    }
 
     render() {
         const data: ChartData = {

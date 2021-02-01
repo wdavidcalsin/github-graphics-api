@@ -1,13 +1,14 @@
 class Repos {
-    constructor() {
-        this.getApiRepo = this.getApiRepo.bind(this);
-        this.getApiCommit = this.getApiCommit.bind(this);
-    }
+    // constructor() {
+    //     this.getApiRepo = this.getApiRepo.bind(this);
+    //     this.getApiCommit = this.getApiCommit.bind(this);
+    // }
 
     public async getApiRepo<TR>(reposUrl: string) {
         const response = await fetch(reposUrl);
+        const res = await response.json();
 
-        return response;
+        console.log(res);
     }
 
     public async getApiCommit<TC>(commits_url: string) {

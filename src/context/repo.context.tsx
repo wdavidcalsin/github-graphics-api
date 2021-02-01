@@ -1,27 +1,21 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { GithubApiI } from '../interfaces/githubApi';
-
 import { RepoApiI } from '../interfaces/repoApi';
-
 import Repos from '../service/repos.service';
-import { useData } from './data.context';
 
 interface IRepo {
-    repo: Array<any>;
+    repo: Array<RepoApiI>;
     setRepo: (repo: any) => void;
-    repoSave: (repo_url: string) => any;
+    repoSave: (repo_url: string) => void;
 }
 
 export const RepoContext = createContext<IRepo>({} as IRepo);
 
 const RepoProvider = ({ children }: any) => {
-    // const { data } = useData();
-
     const [repo, setRepo] = useState([]);
 
     const repoSave = async (repo_url: string) => {
         const repoData = await new Repos().getApiRepo<RepoApiI>(repo_url);
-        return repoData;
+        console.log(repoData);
     };
 
     return (
@@ -37,7 +31,7 @@ const RepoProvider = ({ children }: any) => {
     );
 };
 
-const useCommit = () => {
+const useRepo = () => {
     const { repo, setRepo, repoSave } = useContext(RepoContext);
     return {
         repo,
@@ -46,4 +40,4 @@ const useCommit = () => {
     };
 };
 
-export { RepoProvider as CommitProvider, useCommit };
+export { RepoProvider as CommitProvider, useRepo };
