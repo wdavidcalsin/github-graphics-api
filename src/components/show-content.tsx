@@ -33,12 +33,15 @@ class ShowContent extends Component<MyProps, MyStates> {
     }
 
     componentDidMount() {
-        new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
+        if (Object.entries(this.context.data).length != 0) {
+            new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
+        }
     }
 
     componentDidUpdate() {
-        new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
-        // console.log(this.context.data.repos_url);
+        if (Object.entries(this.context.data).length != 0) {
+            new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
+        }
     }
 
     render() {
