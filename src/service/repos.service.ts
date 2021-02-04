@@ -3,8 +3,11 @@ class Repos {
         const response = await fetch(reposUrl);
         const res = await response.json();
 
-        console.log(res);
-        console.log(reposUrl);
+
+        return res;
+        // console.log(res);
+        // console.log(reposUrl);
+
     }
 
     public async getApiCommit<TC>(commits_url: string) {
