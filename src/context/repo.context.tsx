@@ -3,24 +3,26 @@ import { RepoApiI } from '../interfaces/repoApi';
 
 interface IRepo {
     repo: Array<RepoApiI>;
+
     setRepo: (repo: any) => void;
+    repoMain: (dataRepo: Array<RepoApiI>) => void;
 }
 
 export const RepoContext = createContext<IRepo>({} as IRepo);
 
 const RepoProvider = ({ children }: any) => {
-    const [repo, setRepo] = useState([]);
+    const [repo, setRepo] = useState<Array<RepoApiI>>([]);
 
-    // const repoSave = async (repo_url: string) => {
-    //     const repoData = await new Repos().getApiRepo<RepoApiI>(repo_url);
-    //     console.log(repoData);
-    // };
+    const repoMain = async (dataRepo: Array<RepoApiI>) => {
+        setRepo(await dataRepo);
+    };
 
     return (
         <RepoContext.Provider
             value={{
                 repo,
                 setRepo,
+                repoMain,
             }}
         >
             {children}
@@ -29,11 +31,12 @@ const RepoProvider = ({ children }: any) => {
 };
 
 const useRepo = () => {
-    const { repo, setRepo } = useContext(RepoContext);
+    const { repo, setRepo, repoMain } = useContext(RepoContext);
     return {
         repo,
         setRepo,
+        repoMain,
     };
 };
 
-export { RepoProvider as CommitProvider, useRepo };
+export { RepoProvider, useRepo };
