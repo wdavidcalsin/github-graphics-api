@@ -5,13 +5,16 @@ interface IRepo {
     repo: Array<RepoApiI>;
 
     setRepo: (repo: any) => void;
+
     repoMain: (dataRepo: Array<RepoApiI>) => void;
+
 }
 
 export const RepoContext = createContext<IRepo>({} as IRepo);
 
 const RepoProvider = ({ children }: any) => {
     const [repo, setRepo] = useState<Array<RepoApiI>>([]);
+
 
     const repoMain = async (dataRepo: Array<RepoApiI>) => {
         setRepo(await dataRepo);
@@ -22,7 +25,9 @@ const RepoProvider = ({ children }: any) => {
             value={{
                 repo,
                 setRepo,
+
                 repoMain,
+
             }}
         >
             {children}
@@ -31,11 +36,13 @@ const RepoProvider = ({ children }: any) => {
 };
 
 const useRepo = () => {
+
     const { repo, setRepo, repoMain } = useContext(RepoContext);
     return {
         repo,
         setRepo,
         repoMain,
+
     };
 };
 

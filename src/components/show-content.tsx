@@ -30,6 +30,7 @@ class ShowContent extends Component<MyProps, MyStates> {
         };
     }
 
+
     // componentDidMount() {
     //     if (Object.entries(this.context.data).length != 0) {
     //         new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
@@ -41,6 +42,7 @@ class ShowContent extends Component<MyProps, MyStates> {
     //         new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
     //     }
     // }
+
 
     render() {
         return (
