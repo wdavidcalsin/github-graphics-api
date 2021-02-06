@@ -1,26 +1,21 @@
 import React, { Component, ContextType } from 'react';
-import * as ReactDOM from 'react-dom';
-
+import { DataContext } from '../context/data.context';
+import { RepoContext } from '../context/repo.context';
 import { GithubApiI } from '../interfaces/githubApi';
 import { RepoApiI } from '../interfaces/repoApi';
-
-import { DataContext } from '../context/data.context';
-
-import { Blog } from './common/showNormal';
-import { ProfileGithub } from './common/profileGithub';
-import { RepoContext } from '../context/repo.context';
-
 import Repos from '../service/repos.service';
+import { ProfileGithub } from './common/profileGithub';
+import { Blog } from './common/showNormal';
 
 type MyProps = { props?: undefined };
 type MyStates = { data: GithubApiI };
 
 class ShowContent extends Component<MyProps, MyStates> {
-    static repoxtType = RepoContext;
-    contextRepo!: ContextType<typeof RepoContext>;
-
     static contextType = DataContext;
     context!: ContextType<typeof DataContext>;
+
+    static repoxtType = RepoContext;
+    contextRepo!: ContextType<typeof RepoContext>;
 
     constructor(props?: any) {
         super(props);
@@ -30,19 +25,22 @@ class ShowContent extends Component<MyProps, MyStates> {
         };
     }
 
-
     // componentDidMount() {
     //     if (Object.entries(this.context.data).length != 0) {
     //         new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
     //     }
     // }
 
-    // componentDidUpdate() {
-    //     if (Object.entries(this.context.data).length != 0) {
-    //         new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
-    //     }
-    // }
-
+    componentDidUpdate() {
+        if (Object.entries(this.context.data).length != 0) {
+            // const dataRepo = await new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
+            // this.contextRepo.repoMain(dataRepo);
+            // this.contextRepo.repoMain();
+            console.log(this.contextRepo);
+            console.log(this.context);
+            // console.log(typeof this.contextRepo.repoMain);
+        }
+    }
 
     render() {
         return (
