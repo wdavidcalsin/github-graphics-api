@@ -1,5 +1,8 @@
 import React, { Component, ContextType } from 'react';
-import { DataContext } from '../context/data.context';
+
+import { ChartData, ChartOptions } from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import { DataContext, useData } from '../context/data.context';
 import { RepoContext } from '../context/repo.context';
 import { GithubApiI } from '../interfaces/githubApi';
 import { RepoApiI } from '../interfaces/repoApi';
@@ -10,60 +13,50 @@ import { Blog } from './common/showNormal';
 type MyProps = { props?: undefined };
 type MyStates = { data: GithubApiI };
 
-class ShowContent extends Component<MyProps, MyStates> {
-    static contextType = DataContext;
-    context!: ContextType<typeof DataContext>;
+const dataLine: ChartData = {
+    labels: [
+        'Domingo',
+        'Lunes',
+        'Martes',
+        'Miercoles',
+        'Jueves',
+        'Viernes',
+        'Sabado',
+    ],
+    datasets: [
+        {
+            label: 'commits',
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            weight: 1000000,
 
-    static repoxtType = RepoContext;
-    contextRepo!: ContextType<typeof RepoContext>;
+            data: [65, 59, 80, 81, 56, 55, 40],
+        },
+    ],
+};
 
-    constructor(props?: any) {
-        super(props);
+const optionsChart: ChartOptions = {
+    // responsive: true,
 
-        this.state = {
-            data: {} as GithubApiI,
-        };
-    }
+    legend: {
+        align: 'center',
+        fullWidth: true,
+    },
+};
 
-    // componentDidMount() {
-    //     if (Object.entries(this.context.data).length != 0) {
-    //         new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
-    //     }
-    // }
+const ShowContent = () => {
+    const { data, resStatus } = useData();
 
-    componentDidUpdate() {
-        if (Object.entries(this.context.data).length != 0) {
-            // const dataRepo = await new Repos().getApiRepo<RepoApiI>(this.context.data.repos_url);
-            // this.contextRepo.repoMain(dataRepo);
-            // this.contextRepo.repoMain();
-            console.log(this.contextRepo);
-            console.log(this.context);
-            // console.log(typeof this.contextRepo.repoMain);
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                {Object.keys(this.context.data).length != 0 && this.context.resStatus != 404 ? (
-                    <div className="show-content">
-                        <h2>Statistics</h2>
-                        <ProfileGithub {...this.context.data} />
-                        <Blog blog={this.context.data.blog} />
-                        <h4>company: {this.context.data.company}</h4>
-                        <h4>created at: {this.context.data.created_at}</h4>
-                        <h4>email: {this.context.data.email}</h4>
-                        <h4>events url: {this.context.data.events_url}</h4>
-                        <h4>followers: {this.context.data.followers}</h4>
-                        <h4>followers url: {this.context.data.followers_url}</h4>
-                        <h4>following: {this.context.data.following}</h4>
-                    </div>
-                ) : (
-                    <div>No hay datos todavia</div>
-                )}
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            {Object.keys(data).length != 0 && resStatus != 404 ? (
+                <Line width={500} data={dataLine} options={optionsChart} />
+            ) : (
+                <div>No hay datos todavia</div>
+            )}
+        </div>
+    );
+};
 
 export default ShowContent;

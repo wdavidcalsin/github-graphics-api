@@ -3,17 +3,21 @@ import { RepoApiI } from '../interfaces/repoApi';
 
 interface IRepo {
     repo: Array<RepoApiI>;
-    setRepo: (dataRepo: any) => void;
-    repoMain: () => void;
+    setRepo: (dataRepo: Array<RepoApiI>) => void;
+    repoMain: (repoData: Array<RepoApiI>) => void;
 }
 
 export const RepoContext = createContext<IRepo>({} as IRepo);
 
 const RepoProvider = ({ children }: any) => {
-    const [repo, setRepo] = useState<any>([]);
+    const [repo, setRepo] = useState<Array<RepoApiI>>([]);
 
-    const repoMain = () => {
-        console.log('david');
+    const repoMain = (repoData: Array<RepoApiI>) => {
+        setRepo(repoData);
+
+        repo.map((index) => {
+            console.log(index.size);
+        });
     };
 
     return (
@@ -30,7 +34,7 @@ const RepoProvider = ({ children }: any) => {
 };
 
 const useRepo = () => {
-    const { repo, setRepo, repoMain } = React.useContext(RepoContext);
+    const { repo, setRepo, repoMain } = useContext(RepoContext);
     return {
         repo,
         setRepo,
