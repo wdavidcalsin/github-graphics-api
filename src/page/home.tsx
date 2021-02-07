@@ -5,27 +5,23 @@ import Search from '../components/search';
 import Options from '../components/options';
 import ShowContent from '../components/show-content';
 
-import { ThemeContext } from '../context/theme.context';
+import { useTheme } from '../context/theme.context';
 
-class Home extends Component {
-    static contextType = ThemeContext;
-    context!: ContextType<typeof ThemeContext>;
-
-    render(): ReactNode {
-        return (
-            <div className="home" data-theme={this.context.theme ? 'sun' : 'moon'}>
-                <Layout>
-                    <div className="container-small content">
-                        <Search />
-                        <div className="fx">
-                            <Options />
-                            <ShowContent />
-                        </div>
+const Home = () => {
+    const { theme } = useTheme();
+    return (
+        <div className="home" data-theme={theme ? 'sun' : 'moon'}>
+            <Layout>
+                <div className="container-small content">
+                    <Search />
+                    <div className="fx">
+                        <Options />
+                        <ShowContent />
                     </div>
-                </Layout>
-            </div>
-        );
-    }
-}
+                </div>
+            </Layout>
+        </div>
+    );
+};
 
 export default Home;

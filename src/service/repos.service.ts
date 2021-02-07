@@ -4,15 +4,14 @@ class Repos {
         const res = await response.json();
 
         return res;
-        // console.log(res);
-        // console.log(reposUrl);
     }
 
     public async getApiCommit<TC>(commits_url: string) {
         const commit = commits_url.replace('{/sha}', '');
         const response = await fetch(commit);
+        const res = await response.json();
 
-        return response;
+        return res;
     }
 }
 

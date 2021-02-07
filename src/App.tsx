@@ -7,20 +7,18 @@ import { RepoProvider } from './context/repo.context';
 
 import Home from './page/home';
 
-class App extends React.Component {
-    render(): ReactNode {
-        return (
-            <ThemeProvider>
-                <DataProvider>
+const App = () => {
+    return (
+        <ThemeProvider>
+            <DataProvider>
+                <RepoProvider>
                     <UserInputProvider>
-                        <RepoProvider>
-                            <Home />
-                        </RepoProvider>
+                        <Home />
                     </UserInputProvider>
-                </DataProvider>
-            </ThemeProvider>
-        );
-    }
-}
+                </RepoProvider>
+            </DataProvider>
+        </ThemeProvider>
+    );
+};
 
 export default App;
