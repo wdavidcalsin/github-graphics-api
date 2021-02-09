@@ -4,6 +4,7 @@ import { DataProvider } from './context/data.context';
 import { ThemeProvider } from './context/theme.context';
 import { UserInputProvider } from './context/user.context';
 import { RepoProvider } from './context/repo.context';
+import { CommitProvider } from './context/commit.context';
 
 import Home from './page/home';
 
@@ -11,11 +12,13 @@ const App = () => {
     return (
         <ThemeProvider>
             <DataProvider>
-                <RepoProvider>
-                    <UserInputProvider>
-                        <Home />
-                    </UserInputProvider>
-                </RepoProvider>
+                <CommitProvider>
+                    <RepoProvider>
+                        <UserInputProvider>
+                            <Home />
+                        </UserInputProvider>
+                    </RepoProvider>
+                </CommitProvider>
             </DataProvider>
         </ThemeProvider>
     );
