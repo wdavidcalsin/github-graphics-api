@@ -1,4 +1,9 @@
-import React, { BaseSyntheticEvent, createContext, useContext, useState } from 'react';
+import React, {
+    BaseSyntheticEvent,
+    createContext,
+    useContext,
+    useState,
+} from 'react';
 import { GithubApiI } from '../interfaces/githubApi';
 import ApiGithub from '../service/github.service';
 
