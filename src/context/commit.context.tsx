@@ -9,8 +9,22 @@ export const CommitContext = createContext<ICommitProvider>(
     {} as ICommitProvider,
 );
 
+const weekdays = [
+    'Domingo',
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sabado',
+];
+
 const CommitProvider = ({ children }: any) => {
     const [commit, setCommit] = useState([]);
+
+    // const weekdaysOrdered = (dayId: number) => {
+
+    // };
 
     return (
         <CommitContext.Provider value={{ commit, setCommit }}>

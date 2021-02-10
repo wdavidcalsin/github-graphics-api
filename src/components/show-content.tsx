@@ -13,6 +13,14 @@ import { Blog } from './common/showNormal';
 type MyProps = { props?: undefined };
 type MyStates = { data: GithubApiI };
 
+// interface ChartDataModified extends ChartData {
+//     datasets?: [
+//         {
+//             theme?: () => void
+//          }
+//     ];
+// }
+
 const dataLine: ChartData = {
     labels: [
         'Domingo',
@@ -29,19 +37,36 @@ const dataLine: ChartData = {
             fill: false,
             lineTension: 0.1,
             backgroundColor: 'rgba(75,192,192,0.4)',
-            weight: 1000000,
-
-            data: [65, 59, 80, 81, 56, 55, 40],
+            borderWidth: 1,
+            radius: 4,
+            cubicInterpolationMode: 'monotone',
+            steppedLine: false,
+            data: [3, 6, 4, 10, 15, 1, 2],
         },
     ],
 };
 
 const optionsChart: ChartOptions = {
-    // responsive: true,
-
+    onClick: (element, dataAtClick) => {
+        console.log(element, dataAtClick);
+        alert(JSON.stringify(dataAtClick));
+    },
     legend: {
-        align: 'center',
-        fullWidth: true,
+        display: true,
+        position: 'top',
+
+        labels: {
+            boxWidth: 80,
+            fontColor: 'black',
+        },
+    },
+    layout: {
+        padding: {
+            left: 50,
+            right: 0,
+            top: 0,
+            bottom: 0,
+        },
     },
 };
 
@@ -51,7 +76,14 @@ const ShowContent = () => {
     return (
         <div>
             {Object.keys(data).length != 0 && resStatus != 404 ? (
-                <Line width={500} data={dataLine} options={optionsChart} />
+                <>
+                    <Line
+                        width={500}
+                        height={300}
+                        data={dataLine}
+                        options={optionsChart}
+                    />
+                </>
             ) : (
                 <div>No hay datos todavia</div>
             )}
