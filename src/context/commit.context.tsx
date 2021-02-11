@@ -5,9 +5,7 @@ interface ICommitProvider {
     setCommit: (commit: any) => any;
 }
 
-export const CommitContext = createContext<ICommitProvider>(
-    {} as ICommitProvider,
-);
+export const CommitContext = createContext<ICommitProvider>({} as ICommitProvider);
 
 const weekdays = [
     'Domingo',

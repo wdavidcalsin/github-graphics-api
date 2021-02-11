@@ -8,11 +8,22 @@ import { FaRegBuilding } from 'react-icons/fa';
 
 import { GithubApiI } from '../../interfaces/githubApi';
 
-const timeFormat = (date: string) => {
+export const timeFormat = (date: string) => {
+    const weekdays = [
+        'domingo',
+        'lunes',
+        'martes',
+        'miercoles',
+        'jueves',
+        'virnes',
+        'sabado',
+    ];
     const dateCreate = new Date(date);
     const dateCurrent = new Date();
 
-    return -(dateCreate.getFullYear() - dateCurrent.getFullYear());
+    console.log(weekdays[dateCreate.getUTCDay()]);
+
+    // return -(dateCreate.getFullYear() - dateCurrent.getFullYear());
 };
 
 const ProfileGithub = (props: GithubApiI) => {
@@ -35,7 +46,9 @@ const ProfileGithub = (props: GithubApiI) => {
                     </li>
                     <li>
                         <BiTimeFive />
-                        <span>Joined GitHub {timeFormat(props.created_at)} years ago</span>
+                        <span>
+                            Joined GitHub {timeFormat(props.created_at)} years ago
+                        </span>
                     </li>
                     <li>
                         <FaRegBuilding />
@@ -53,4 +66,4 @@ const ProfileGithub = (props: GithubApiI) => {
     );
 };
 
-export { ProfileGithub };
+export default ProfileGithub;

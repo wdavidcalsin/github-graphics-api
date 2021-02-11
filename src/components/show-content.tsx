@@ -1,4 +1,4 @@
-import React, { Component, ContextType } from 'react';
+import React, { useEffect } from 'react';
 
 import { ChartData, ChartOptions } from 'chart.js';
 import { Line } from 'react-chartjs-2';
@@ -7,7 +7,7 @@ import { RepoContext } from '../context/repo.context';
 import { GithubApiI } from '../interfaces/githubApi';
 import { RepoApiI } from '../interfaces/repoApi';
 import Repos from '../service/repos.service';
-import { ProfileGithub } from './common/profileGithub';
+import { timeFormat } from './common/profileGithub';
 import { Blog } from './common/showNormal';
 
 type MyProps = { props?: undefined };
@@ -22,15 +22,7 @@ type MyStates = { data: GithubApiI };
 // }
 
 const dataLine: ChartData = {
-    labels: [
-        'Domingo',
-        'Lunes',
-        'Martes',
-        'Miercoles',
-        'Jueves',
-        'Viernes',
-        'Sabado',
-    ],
+    labels: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
     datasets: [
         {
             label: 'commits',
@@ -47,9 +39,8 @@ const dataLine: ChartData = {
 };
 
 const optionsChart: ChartOptions = {
-    onClick: (element, dataAtClick) => {
-        console.log(element, dataAtClick);
-        alert(JSON.stringify(dataAtClick));
+    onClick: (element, dataAtClick: any) => {
+        if (dataAtClick?.length != 0) console.log(dataAtClick[1]);
     },
     legend: {
         display: true,
