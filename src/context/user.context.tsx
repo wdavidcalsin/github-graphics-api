@@ -13,9 +13,7 @@ interface IUserInput {
     onSubmitsendUser: (e: React.BaseSyntheticEvent) => void;
 }
 
-export const UserInputContext = React.createContext<IUserInput>(
-    {} as IUserInput,
-);
+export const UserInputContext = React.createContext<IUserInput>({} as IUserInput);
 
 const UserInputProvider = ({ children }: any) => {
     const [user, setUser] = React.useState<string>('...');
@@ -31,9 +29,7 @@ const UserInputProvider = ({ children }: any) => {
         setResSatus(await res.status);
 
         if (Object.entries(data).length != 0) {
-            const resRepo = await new Repos().getApiRepo<RepoApiI>(
-                data.repos_url,
-            );
+            const resRepo = await new Repos().getApiRepo<RepoApiI>(data.repos_url);
             repoMain(resRepo);
         }
     };
@@ -52,9 +48,7 @@ const UserInputProvider = ({ children }: any) => {
 };
 
 const useUserInput = () => {
-    const { user, setUser, onSubmitsendUser } = React.useContext(
-        UserInputContext,
-    );
+    const { user, setUser, onSubmitsendUser } = React.useContext(UserInputContext);
     return {
         user,
         setUser,

@@ -14,10 +14,6 @@ const RepoProvider = ({ children }: any) => {
 
     const repoMain = (repoData: Array<RepoApiI>) => {
         setRepo(repoData);
-
-        repo.map((index) => {
-            console.log(index.size);
-        });
     };
 
     return (
