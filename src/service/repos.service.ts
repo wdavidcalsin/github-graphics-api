@@ -1,3 +1,5 @@
+import { DataMain } from './dataMain.service';
+
 class Repos {
     public async getApiRepo<TR>(reposUrl: string) {
         const response = await fetch(reposUrl);
