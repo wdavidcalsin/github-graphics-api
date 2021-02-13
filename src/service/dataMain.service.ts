@@ -1,13 +1,13 @@
 export class DataMain {
-    async fetchGet(url: string) {
+    fetchGet = async (url: string) => {
         const result = await fetch(url);
 
         return result;
-    }
+    };
 
-    fetchGetData = async (url: string) => {
+    fetchGetData = async <T>(url: string) => {
         const result = await fetch(url);
-        const data = await result.json();
+        const data: T = await result.json();
 
         return data;
     };
