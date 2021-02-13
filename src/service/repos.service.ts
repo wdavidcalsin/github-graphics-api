@@ -1,9 +1,20 @@
 import { DataMain } from './dataMain.service';
 
+import { RepoApiI } from '../interfaces/repoApi';
+import { CommitApiI } from '../interfaces/commitApi';
+import { TypeOfTag } from 'typescript';
 class Repos {
-    public async getApiRepo<TR>(reposUrl: string) {
-        const response = await fetch(reposUrl);
-        const res = await response.json();
+    public dataRepo: Array<RepoApiI>;
+    public dataCommit: Array<CommitApiI>;
+
+    constructor() {
+        this.dataRepo = [];
+        this.dataCommit = [];
+    }
+
+    public async getApiRepo<TR extends Array<RepoApiI>>(reposUrl: string) {
+        const res = await new DataMain().fetchGetData<TR>(reposUrl);
+        this.dataRepo = res;
 
         return res;
     }

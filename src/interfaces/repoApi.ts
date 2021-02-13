@@ -6,4 +6,5 @@ export interface RepoApiI {
     commits_url: string;
     language: string;
     size: number;
+    fork: boolean;
 }

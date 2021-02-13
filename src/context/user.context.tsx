@@ -29,7 +29,7 @@ const UserInputProvider = ({ children }: any) => {
         setResSatus(await res.status);
 
         if (Object.entries(data).length != 0) {
-            const resRepo = await new Repos().getApiRepo<RepoApiI>(data.repos_url);
+            const resRepo = await new Repos().getApiRepo<Array<RepoApiI>>(data.repos_url);
             repoMain(resRepo);
         }
     };

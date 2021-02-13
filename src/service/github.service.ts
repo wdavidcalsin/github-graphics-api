@@ -1,11 +1,9 @@
 import { GithubApiI } from '../interfaces/githubApi';
+import { DataMain } from './dataMain.service';
 
 class ApiGithub {
     public async getApi<T>(user: string) {
-        const response = await fetch(`https://api.github.com/users/${user}`);
-        // const body = await response.json();
-        // const status = await response.status;
-        // console.log(response);
+        const response = new DataMain().fetchGet(`https://api.github.com/users/${user}`);
         return response;
     }
 }
