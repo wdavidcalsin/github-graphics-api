@@ -16,15 +16,19 @@ class Repos {
         const res = await new DataMain().fetchGetData<TR>(reposUrl);
         this.dataRepo = res;
 
+        this.dataRepo.map((i) => {
+            if (i.private == false) this.getApiCommit<CommitApiI>(i.commits_url);
+        });
+
+        console.log(this.dataCommit);
+
         return res;
     }
 
-    public async getApiCommit<TC>(commits_url: string) {
+    public async getApiCommit<TC extends CommitApiI>(commits_url: string) {
         const commit = commits_url.replace('{/sha}', '');
-        const response = await fetch(commit);
-        const res = await response.json();
-
-        return res;
+        const res = await new DataMain().fetchGetData<TC>(commit);
+        this.dataCommit = [...this.dataCommit, res];
     }
 }
 
